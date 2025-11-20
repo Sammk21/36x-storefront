@@ -18,6 +18,7 @@ const nextConfig = {
       fullUrl: true,
     },
   },
+  output: 'standalone',
   eslint: {
     ignoreDuringBuilds: true,
   },
