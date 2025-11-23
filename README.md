@@ -1,125 +1,162 @@
-<p align="center">
-  <a href="https://www.medusajs.com">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/59018053/229103275-b5e482bb-4601-46e6-8142-244f531cebdb.svg">
-    <source media="(prefers-color-scheme: light)" srcset="https://user-images.githubusercontent.com/59018053/229103726-e5b529a3-9b3f-4970-8a1f-c6af37f087bf.svg">
-    <img alt="Medusa logo" src="https://user-images.githubusercontent.com/59018053/229103726-e5b529a3-9b3f-4970-8a1f-c6af37f087bf.svg">
-    </picture>
-  </a>
-</p>
+# 36X Streetwear Storefront
 
-<h1 align="center">
-  Medusa Next.js Starter Template
-</h1>
+A modern, performant e-commerce storefront built with Next.js 15 and Medusa V2, customized for 36X streetwear brand.
 
-<p align="center">
-Combine Medusa's modules for your commerce backend with the newest Next.js 15 features for a performant storefront.</p>
+## Overview
 
-<p align="center">
-  <a href="https://github.com/medusajs/medusa/blob/master/CONTRIBUTING.md">
-    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat" alt="PRs welcome!" />
-  </a>
-  <a href="https://discord.gg/xpCwq3Kfn8">
-    <img src="https://img.shields.io/badge/chat-on%20discord-7289DA.svg" alt="Discord Chat" />
-  </a>
-  <a href="https://twitter.com/intent/follow?screen_name=medusajs">
-    <img src="https://img.shields.io/twitter/follow/medusajs.svg?label=Follow%20@medusajs" alt="Follow @medusajs" />
-  </a>
-</p>
+This storefront is built with:
 
-### Prerequisites
+- [Next.js 15](https://nextjs.org/) - React framework with App Router
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [TypeScript](https://www.typescriptlang.org/) - Type-safe JavaScript
+- [Medusa V2](https://medusajs.com/) - Commerce backend
 
-To use the [Next.js Starter Template](https://medusajs.com/nextjs-commerce/), you should have a Medusa server running locally on port 9000.
-For a quick setup, run:
+## Features
+
+### E-commerce Functionality
+- Product Detail Pages
+- Product Collections
+- Shopping Cart
+- Checkout with multiple payment providers (Stripe, Razorpay, PayPal)
+- User Accounts & Authentication
+- Order Management
+- Multi-currency & Multi-region support
+
+### Design & Branding
+- Custom 36X branding and color scheme
+- Bebas Neue font for display text
+- Raleway font for body text
+- Brick texture background pattern
+- Responsive design for all devices
+
+### Technical Features
+- Next.js 15 App Router
+- Server Components & Server Actions
+- Optimized fetching and caching
+- Static Pre-Rendering
+- Streaming support
+- TurbopackDev mode for faster builds
+
+## Prerequisites
+
+You need a Medusa backend server running locally on port 9000. For a quick setup:
 
 ```shell
 npx create-medusa-app@latest
 ```
 
-Check out [create-medusa-app docs](https://docs.medusajs.com/learn/installation) for more details and troubleshooting.
+See [Medusa installation docs](https://docs.medusajs.com/learn/installation) for more details.
 
-# Overview
+## Getting Started
 
-The Medusa Next.js Starter is built with:
-
-- [Next.js](https://nextjs.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Typescript](https://www.typescriptlang.org/)
-- [Medusa](https://medusajs.com/)
-
-Features include:
-
-- Full ecommerce support:
-  - Product Detail Page
-  - Product Overview Page
-  - Product Collections
-  - Cart
-  - Checkout with Stripe
-  - User Accounts
-  - Order Details
-- Full Next.js 15 support:
-  - App Router
-  - Next fetching/caching
-  - Server Components
-  - Server Actions
-  - Streaming
-  - Static Pre-Rendering
-
-# Quickstart
-
-### Setting up the environment variables
-
-Navigate into your projects directory and get your environment variables ready:
-
-```shell
-cd nextjs-starter-medusa/
-mv .env.template .env.local
-```
-
-### Install dependencies
-
-Use Yarn to install all dependencies.
+### 1. Install Dependencies
 
 ```shell
 yarn
 ```
 
-### Start developing
+### 2. Environment Variables
 
-You are now ready to start up your project.
+Create a `.env.local` file based on `.env.template`:
+
+```shell
+cp .env.template .env.local
+```
+
+Required environment variables:
+```
+NEXT_PUBLIC_MEDUSA_BACKEND_URL=http://localhost:9000
+NEXT_PUBLIC_BASE_URL=http://localhost:8000
+NEXT_PUBLIC_DEFAULT_REGION=us
+```
+
+### 3. Start Development Server
 
 ```shell
 yarn dev
 ```
 
-### Open the code and start customizing
+Your site will be running at [http://localhost:8000](http://localhost:8000)
 
-Your site is now running at http://localhost:8000!
+## Payment Integrations
 
-# Payment integrations
+This storefront supports multiple payment providers:
 
-By default this starter supports the following payment integrations
+- **Stripe** - Credit card payments
+- **Razorpay** - Indian payment gateway
+- **PayPal** - Global payment platform
 
-- [Stripe](https://stripe.com/)
+### Stripe Setup
 
-To enable the integrations you need to add the following to your `.env.local` file:
-
+Add to your `.env.local`:
 ```shell
 NEXT_PUBLIC_STRIPE_KEY=<your-stripe-public-key>
 ```
 
-You'll also need to setup the integrations in your Medusa server. See the [Medusa documentation](https://docs.medusajs.com) for more information on how to configure [Stripe](https://docs.medusajs.com/resources/commerce-modules/payment/payment-provider/stripe#main).
+Configure Stripe in your Medusa backend following the [Stripe integration docs](https://docs.medusajs.com/resources/commerce-modules/payment/payment-provider/stripe).
 
-# Resources
+### Razorpay Setup
 
-## Learn more about Medusa
+Add to your `.env.local`:
+```shell
+NEXT_PUBLIC_RAZORPAY_KEY=<your-razorpay-key>
+```
 
-- [Website](https://www.medusajs.com/)
-- [GitHub](https://github.com/medusajs)
-- [Documentation](https://docs.medusajs.com/)
+## Project Structure
 
-## Learn more about Next.js
+```
+src/
+├── app/                    # Next.js App Router pages
+├── modules/                # Feature modules
+│   ├── account/           # User account management
+│   ├── cart/              # Shopping cart
+│   ├── checkout/          # Checkout flow
+│   ├── home/              # Homepage components
+│   ├── layout/            # Layout components (nav, footer)
+│   ├── products/          # Product displays
+│   └── store/             # Store/collection pages
+├── lib/                   # Utilities and data fetching
+├── styles/                # Global styles
+└── types/                 # TypeScript types
+```
 
-- [Website](https://nextjs.org/)
-- [GitHub](https://github.com/vercel/next.js)
-- [Documentation](https://nextjs.org/docs)
+## Customization
+
+### Branding
+- Colors: Edit `tailwind.config.js` under `theme.extend.colors.brand`
+- Fonts: Configure in `src/app/layout.tsx`
+- Logo: Replace navigation logo in `src/modules/layout/templates/nav/`
+
+### Homepage
+The homepage has been cleared for custom content. Add your sections in:
+```
+src/app/[countryCode]/(main)/page.tsx
+```
+
+## Build & Deploy
+
+### Production Build
+```shell
+yarn build
+```
+
+### Start Production Server
+```shell
+yarn start
+```
+
+## Resources
+
+### Medusa
+- [Medusa Website](https://www.medusajs.com/)
+- [Medusa Documentation](https://docs.medusajs.com/)
+- [Medusa GitHub](https://github.com/medusajs)
+
+### Next.js
+- [Next.js Website](https://nextjs.org/)
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Next.js GitHub](https://github.com/vercel/next.js)
+
+## License
+
+This project is private and proprietary to 36X.
