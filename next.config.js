@@ -29,7 +29,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "via.placeholder.com",
+        hostname: "picsum.photos",
       },
       {
         protocol: "http",
@@ -39,6 +39,11 @@ const nextConfig = {
         protocol: "https",
         hostname: "medusa-public-images.s3.eu-west-1.amazonaws.com",
       },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+   
       {
         protocol: "https",
         hostname: "medusa-server-testing.s3.amazonaws.com",
