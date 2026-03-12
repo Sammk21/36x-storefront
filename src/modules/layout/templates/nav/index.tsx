@@ -1,79 +1,78 @@
 import { Suspense } from "react"
-
 import { listRegions } from "@lib/data/regions"
 import { StoreRegion } from "@medusajs/types"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import CartButton from "@modules/layout/components/cart-button"
 import SideMenu from "@modules/layout/components/side-menu"
 import Image from "next/image"
-import Button from "components/ui/Button"
-import { ProgressiveBlur } from "@lib/components/ui/progressive-blur"
+import { ProgressiveBlur } from "components/ui/progressive-blur"
+
+const NAV_LINKS = ["Culture", "Collection", "Community", "Core"]
 
 export default async function Nav() {
   const regions = await listRegions().then((regions: StoreRegion[]) => regions)
 
   return (
-    <div className="fixed top-0  inset-x-0 z-50 group">
-      <header className="relative h-20 mx-auto  duration-200 bg-transparent ">
-        <nav className="content-container z-10 txt-xsmall-plus text-white flex items-center justify-between w-full h-full text-small-regular">
+    <div className="fixed inset-x-0 top-0 z-50">
+      <header className="relative mx-auto h-16 bg-transparent duration-200 md:h-20">
+        <nav className="relative flex h-full w-full items-center justify-between px-5 text-white md:px-8">
           <ProgressiveBlur className="z-0" position="top" height="100%" />
-          <div className="h-7 z-1 relative w-52">
-            <div className="flex-1 basis-0 h-full flex items-center">
-              <LocalizedClientLink data-testid="nav-store-link" href="/">
-                <Image
-                  fill
-                  className="object-contain"
-                  src="/assets/logo/36x-logo.svg"
-                  alt=""
-                />
-              </LocalizedClientLink>
-            </div>
-          </div>
-          {/* <div className=" h-full flex items-center">
-            <div className="h-full">
-              <SideMenu regions={regions} />
-            </div>
-          </div> */}
 
-          <div className="flex items-center z-1 text-white">
-            <ul className="flex gap-4 uppercase font-display font-normal text-xl tracking-tight">
-              <li>Culture</li>
-              <li>Collection</li>
-              <li>Community</li>
-              <li>Core</li>
+          {/* Logo */}
+          <div className="z-10 flex h-full items-center">
+            <LocalizedClientLink data-testid="nav-store-link" href="/">
+              <Image
+                className="h-auto object-contain"
+                src="/assets/logo/36x-logo.svg"
+                alt=""
+                width={70}
+                height={10}
+              />
+            </LocalizedClientLink>
+          </div>
+
+          {/* Desktop nav links — hidden on mobile */}
+          <div className="z-10 hidden items-center md:flex">
+            <ul className="flex gap-8 font-display text-2xl uppercase tracking-tight">
+              {NAV_LINKS.map((item) => (
+                <li key={item}>
+                  <a href="#" className="group flex flex-col items-center">
+                    {item}
+                    <span className="relative -mt-0.5 h-[2px] w-6 overflow-hidden">
+                      <span className="absolute left-1/2 h-full w-0 bg-white transition-all duration-300 group-hover:left-0 group-hover:w-full" />
+                    </span>
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          <div className="flex z-1 items-center gap-x-6 h-full flex-1 basis-0 justify-end">
-            {/* <div className="hidden small:flex items-center gap-x-6 h-full">
-              <LocalizedClientLink
-                className="hover:text-ui-fg-base"
-                href="/account"
-                data-testid="nav-account-link"
-              >
-                Account
-              </LocalizedClientLink>
-            </div> */}
+          {/* Right side */}
+          <div className="z-10 flex items-center gap-x-4">
+            {/* Cart — always visible */}
             <Suspense
               fallback={
                 <LocalizedClientLink
-                  className="uppercase flex font-display text-lg gap-2"
+                  className="flex gap-2 font-display text-2xl uppercase"
                   href="/cart"
-                  data-testid="nav-cart-link "
+                  data-testid="nav-cart-link"
                 >
                   <img
                     className="h-4 w-4"
                     src="/assets/icons/Cart.svg"
                     alt=""
                   />
-                  Cart (0)
+                  <span className="hidden sm:inline">Cart (0)</span>
                 </LocalizedClientLink>
               }
             >
-              {/* <Button className="rounded-lg text-lg uppercase"> */}
               <CartButton />
-              {/* </Button> */}
             </Suspense>
+
+            {/* Mobile hamburger — only on mobile */}
+            <div className="md:hidden">
+              <SideMenu regions={regions} />
+            </div>
           </div>
         </nav>
       </header>

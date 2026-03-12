@@ -6,6 +6,8 @@ import { FragmentOfMovement } from "@modules/home/components/fragment-of-movemen
 import FeedStackSection from "@modules/home/components/feed-section"
 import ArtistCollaborations from "@modules/home/components/artist-collab"
 import StackedSlider from "@modules/home/components/slider"
+import PageShell from "components/PageShell"
+import HomeHero from "@modules/home/components/HomeHero.tsx"
 
 export const metadata: Metadata = {
   title: "36X - Streetwear Store",
@@ -27,39 +29,16 @@ export default async function Home(props: {
 
   return (
     <>
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
-        <div className="text-center px-4 flex items-center justify-center flex-col ">
-          <div>
-            <h1 className=" text-6xl md:text-9xl tracking-normal leading-[104%] font-display ">
-              BORN ON BRICK <br /> BUILT FOR MOTION
-            </h1>
-            <p className=" text-xl md:text-2xl ">
-              Streetwear from the underground up.
-            </p>
-          </div>
-          <div className="flex gap-2">
-            <Button
-              href={`/${countryCode}/collections`}
-              className="mt-8 rounded-lg"
-              variant="primary"
-            >
-              Community CTA
-            </Button>
-            <Button
-              href={`/${countryCode}/collections`}
-              className="mt-8 rounded-lg border-white"
-              variant="outline"
-            >
-              Collections CTA
-            </Button>
-          </div>
-        </div>
-      </div>
-      <CollectionSection />
-      <ArtistCollaborations />
-      <FragmentOfMovement />
-      <FeedStackSection />
-      <StackedSlider />
+      <PageShell
+        topImage={"/images/top.jpg"}
+        bgTileImage={"/images/bottom.jpg"}
+      >
+        <HomeHero countryCode={countryCode} />
+        <CollectionSection />
+        <ArtistCollaborations />
+        <FragmentOfMovement />
+        <FeedStackSection />
+      </PageShell>
     </>
   )
 }

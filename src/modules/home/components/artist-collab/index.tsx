@@ -1,5 +1,6 @@
 "use client"
 
+import SectionIntro from "components/SectionIntro"
 import Image from "next/image"
 
 const collaborations = [
@@ -25,17 +26,20 @@ const collaborations = [
 
 export default function ArtistCollaborations() {
   return (
-    <section className="w-full bg-black text-white py-24 px-6">
+    <section className="w-full  text-white py-24 px-6">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-display leading-[0.95]">
-            ARTIST COLLABORATIONS
-          </h2>
-
-          <p className="mt-4 text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto">
-            Each collaboration tells a story through fabric, form, and color.
-          </p>
+       
+        <div className="text-center mb-16 space-y-4">
+          <SectionIntro
+            descriptionClassName="text-neutral-200"
+            title={<>ARTIST COLLABORATIONS</>}
+            description={
+              <>
+                Each collaboration tells a story through fabric, form, and
+                color.
+              </>
+            }
+          />
         </div>
 
         {/* Cards */}

@@ -541,7 +541,7 @@ function ChapterGroup({ group }: ChapterGroupProps): JSX.Element {
 
         {/* Spine dot */}
         <motion.div
-          className="absolute rounded-full bg-black"
+          className="absolute rounded-full "
           style={{
             width: 11,
             height: 11,
